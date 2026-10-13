@@ -1,0 +1,496 @@
+/* Cairo Jazz quest: additions on top of the Questita quest-v2 styles. */
+
+.jq-lead{margin-top:.5rem;font-size:1rem;font-weight:600;line-height:1.35;color:var(--body)}
+
+/* On screen: 12 episodes */
+.jq-onscreen{display:grid;gap:16px;margin-top:18px}
+@media (min-width:768px){.jq-onscreen{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:start}}
+.jq-eps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;list-style:none;margin:0;padding:0}
+.jq-ep{position:relative;width:100%;min-width:0;padding:4px}
+.jq-ep-n{font-size:calc(var(--pxu) * 1.6);color:var(--merlot);letter-spacing:.04em}
+.jq-ep.is-hero{background:var(--blue)}
+.jq-ep.is-hero.is-selected{background:var(--yellow)}
+.jq-ep-star{position:absolute;top:3px;right:3px;width:14px;height:14px}
+.jq-insp{min-height:112px}
+
+/* Two ways to play */
+.jq-tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.jq-tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:12px 8px;min-width:0}
+.jq-tab-k{color:var(--body);font-size:var(--pxu)}
+.jq-tab-name{font-weight:800;color:var(--merlot);line-height:1.15;font-size:.9375rem}
+.jq-tab-price{font-weight:700;color:var(--body);font-size:.875rem}
+.jq-tab.is-picked{background:var(--yellow)}
+.jq-tabs+.jq-insp{margin-top:16px}
+
+.jq-list{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px}
+.jq-list li{position:relative;padding-left:20px;font-weight:600;line-height:1.35;font-size:.9375rem}
+.jq-list li:before{content:"";position:absolute;left:0;top:.42em;width:8px;height:8px;background:var(--yellow)}
+.jq-list-sm li{font-size:.875rem}
+.jq-more{margin-top:14px;display:inline-block;background:var(--yellow);color:var(--merlot);padding:10px 14px;min-height:44px;cursor:pointer;border:0}
+
+.jq-panel{margin-top:16px;background:var(--merlot);color:var(--coconut);padding:20px 18px}
+@media (min-width:768px){.jq-panel{padding:28px 30px}}
+.jq-panel-k{color:var(--yellow)}
+.jq-panel-name{margin-top:8px;font-size:1.5rem;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.jq-panel-price{margin-top:8px;font-size:1.75rem;font-weight:800;color:var(--yellow);display:flex;flex-direction:column;gap:2px;line-height:1.1}
+.jq-panel-price span{font-size:.9375rem;font-weight:600;color:var(--coconut-78)}
+.jq-panel-h{margin-top:20px;color:var(--yellow)}
+.jq-panel .jq-list{max-width:62ch}
+.jq-pay{margin-top:20px;border-top:2px solid rgba(249,245,233,.25);padding-top:2px}
+.jq-pay p:last-child{margin-top:6px;font-weight:700;line-height:1.35}
+.jq-foot{margin-top:18px;max-width:62ch;font-size:.9375rem;font-weight:600;color:var(--body);line-height:1.45}
+
+/* Member perk: second fox walks in, product drops into the backpack */
+.jq-perk{margin-top:12px;border-top:3px solid var(--merlot);padding-top:12px}
+.jq-stage{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;overflow-x:clip}
+.jq-fox2{position:relative;width:64px;flex:none;animation:jq-walk .9s steps(6) both}
+/* BASELINE fix 17: .jq-tint (hue-rotate) removed; see .jq-badge below */
+.jq-tag{display:block;width:max-content;margin:-2px auto 0;padding:2px 5px;background:var(--coconut);border:2px solid var(--merlot);color:var(--merlot);font-size:7px;letter-spacing:.1em}
+.jq-bag{flex:1;min-width:0;background:var(--merlot);padding:6px 8px 8px;text-align:center}
+.jq-bag-k{display:block;margin-bottom:6px;color:var(--yellow);font-size:8px;letter-spacing:.2em}
+.jq-slots{display:flex;justify-content:center;gap:6px}
+.jq-slot{width:40px;height:40px;padding:3px;background:var(--coconut);border:2px solid var(--yellow);display:block;overflow:visible}
+.jq-item{display:block;width:100%;height:100%;animation:jq-drop .5s steps(5) both}
+.jq-fox-line{margin-top:10px;font-size:.875rem;font-weight:600;line-height:1.35;color:var(--merlot)}
+.jq-perk-k{margin-top:10px;display:inline-block;padding:3px 8px;background:var(--yellow);color:var(--merlot);animation:jq-pop .3s steps(3) 1.1s both}
+.jq-perk-copy{margin-top:6px;font-size:.875rem;font-weight:700;line-height:1.35;color:var(--merlot);animation:jq-pop .3s steps(3) 1.2s both}
+@keyframes jq-walk{from{transform:translateX(-160%)}to{transform:none}}
+@keyframes jq-drop{from{transform:translateY(-40px);opacity:0}50%{opacity:1}to{transform:none;opacity:1}}
+@keyframes jq-pop{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.jq-fox2,.jq-item,.jq-perk-k,.jq-perk-copy{animation:none}}
+
+/* Save point */
+.jq-contact{display:flex;flex-direction:column;align-items:flex-start;gap:18px;max-width:100%}
+.jq-contact .btn{max-width:100%;text-align:center}
+@media (max-width:480px){.jq-contact{width:100%}.jq-contact .btn{width:100%}}
+.jq-lines{display:flex;flex-direction:column;gap:6px;font-size:1.0625rem;font-weight:700}
+.jq-lines a{text-decoration:underline;text-underline-offset:3px;word-break:break-word}
+.jq-sign{display:flex;flex-direction:column;gap:2px;font-size:1rem;font-weight:600}
+.jq-sign strong{font-size:1.125rem;font-weight:800}
+
+/* Cairo Jazz additions */
+.q2-marker>span.jq-bldg{position:absolute;left:50%;top:calc(100% + 2px);transform:translateX(-50%);width:max-content;height:auto;display:block;padding:4px 7px;background:var(--merlot);color:var(--coconut);outline:0;font-size:8px;letter-spacing:.14em;line-height:1.2}
+.jq-scene{display:block;width:100%;height:auto;margin-top:14px;background:var(--night)}
+.jq-count{margin-top:12px;color:var(--merlot)}
+.jq-song{display:block;width:100%;margin-top:12px;min-height:56px;padding:14px 18px;background:var(--merlot);color:var(--yellow);font-size:calc(var(--pxu) * 1.8);letter-spacing:.14em;cursor:pointer;border:0;transition:transform .12s}
+.jq-song:active{transform:translateY(2px)}
+.jq-song:disabled{background:var(--merlot-700);color:var(--coconut-78);cursor:default}
+.jq-payoff{margin-top:10px;font-size:1rem;font-weight:700;line-height:1.35;color:var(--merlot);min-height:1px}
+.jq-small{margin-top:10px;font-size:.8125rem;font-weight:600;line-height:1.35;color:var(--body)}
+.jq-asks{display:grid;gap:10px;margin-top:16px}
+.jq-ask{padding:12px 14px;text-align:left;font-weight:800;color:var(--merlot);font-size:1rem}
+.jq-ask.is-picked{background:var(--yellow)}
+.jq-sign-in{display:block}
+.jq-cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.jq-card{padding:10px 8px;background:var(--coconut);border:3px solid var(--merlot);color:var(--merlot);font-weight:800;font-size:.875rem;line-height:1.2;text-align:center;cursor:pointer;min-height:56px}
+.jq-card.is-picked{background:var(--yellow);box-shadow:0 0 0 3px var(--yellow),0 0 0 6px var(--merlot)}
+.jq-card-d{margin-top:14px;font-size:.9375rem;font-weight:600;line-height:1.4;color:var(--body)}
+.jq-band{background:var(--yellow)}
+.jq-acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.jq-act{min-height:48px;padding:8px;background:var(--merlot);color:var(--coconut);border:0;cursor:pointer;font-size:var(--pxu)}
+.jq-act.is-picked{background:var(--yellow);color:var(--merlot);outline:3px solid var(--merlot)}
+.jq-ticket{margin-top:10px}
+.jq-xp{display:inline-block;padding:3px 8px;background:var(--yellow);color:var(--merlot)}
+.jq-ex{margin-top:6px;font-size:.75rem;font-weight:700;color:var(--body);font-style:italic}
+.jq-sched{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.jq-sched li{padding:8px 10px;background:var(--coconut);border:2px solid var(--merlot);font-weight:700;font-size:.875rem;color:var(--merlot)}
+.jq-sched li.is-soon{background:var(--blue)}
+.jq-num{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.jq-copy{padding:6px 10px;background:var(--merlot);color:var(--coconut);border:0;cursor:pointer;min-height:36px}
+.jq-sign span{font-weight:600}
+.jq-free{margin-top:10px;color:var(--body);font-size:calc(var(--pxu) * .9)}
+.jq-notes{position:relative;height:0}
+.jq-note{position:absolute;bottom:4px;font-size:1.25rem;font-weight:800;color:var(--yellow);animation:jq-float 1.1s steps(8) both;pointer-events:none;text-shadow:2px 2px 0 var(--merlot)}
+@keyframes jq-float{from{transform:translateY(0);opacity:1}to{transform:translateY(-90px);opacity:0}}
+@media (prefers-reduced-motion:reduce){.jq-note{animation:none;opacity:0}}
+.jq-tag-ep{display:inline-block;margin-top:10px;padding:4px 8px;background:var(--yellow);color:var(--merlot)}
+.jq-asks{grid-template-columns:1fr 1fr}
+.jq-stmt{margin-top:10px;padding-top:8px;border-top:2px solid rgba(249,245,233,.3);font-size:.875rem;font-weight:700;line-height:1.35;color:var(--yellow)}
+
+/* ==========================================================================
+   BASELINE (cairo-jazz-quest-base) additions. Fix numbers refer to the approved list.
+   ========================================================================== */
+
+/* 14l: the night tone that .jq-scene and the canvas expect */
+:root{--night:#3b111b}
+
+/* 14e: legibility. Pixel font only at 16px+, tighter tracking on small pixel labels; Manrope body copy 15px+ (16px on phones) */
+.t-px1,.jq-px16{font-size:max(16px,var(--pxu));letter-spacing:.12em}
+.q2-ctl{font-size:16px;letter-spacing:.1em}
+#plain-stops .q2-plain-h{font-size:max(16px,var(--pxu));letter-spacing:.14em}
+.jq-bag-k{font-family:var(--font-sans);text-transform:uppercase;font-weight:800;font-size:12px;letter-spacing:.08em}
+.jq-card,.jq-fox-line,.jq-perk-copy,.jq-sched li,.jq-pop-status{font-size:.9375rem}
+@media (max-width:767px){
+  .jq-card-d,.jq-fox-line,.jq-perk-copy,.jq-sched li,.jq-pop-status,.jq-lines,.jq-unlock,
+  .q2-popup .text-\[0\.9375rem\],.q2-dialog-in p.mt-1\.5{font-size:1rem}
+}
+
+/* 13: WhatsApp pill (header). Standard WhatsApp green + white glyph/text.
+   NOTE: white on WhatsApp dark green #128C7E is ~4.1:1 contrast. */
+.jq-wa-pill,.jq-wa-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 14px;border-radius:999px;background:#128C7E;color:#fff;font-family:var(--font-sans);font-weight:800;font-size:.9375rem;line-height:1;white-space:nowrap;box-shadow:0 0 0 3px var(--merlot);text-decoration:none}
+.jq-wa-pill:hover,.jq-wa-btn:hover{background:#075E54}
+.jq-wa-pill:focus-visible,.jq-wa-btn:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.jq-wa-ico{width:20px;height:20px;flex:none;display:block}
+.jq-wa-long{display:none}
+@media (min-width:768px){.jq-wa-long{display:inline}.jq-wa-short{display:none}}
+@media (max-width:359px){.jq-wa-pill{padding:0 10px;gap:6px;font-size:.875rem}}
+.jq-wa-cta{gap:12px}
+.jq-wa-cta .jq-wa-ico{width:22px;height:22px;color:#25D366}
+
+/* 5B: mobile menu above everything in the HUD */
+.jq-menu{z-index:60}
+
+/* 14c + 14n: ONE progress bar. "The route" is a sub-segment of the XP bar; cells are 24px wide */
+.q2-cellbtn{width:24px}
+.jq-xp-k{font-size:16px;letter-spacing:.1em}
+.jq-xp-route{position:relative;display:flex;align-items:center;margin:0 4px;padding:0 2px}
+.jq-xp-route:before{content:"";position:absolute;left:0;right:0;bottom:5px;height:3px;background:var(--yellow);opacity:.45}
+.q2-xp.is-route .jq-xp-route:before{opacity:1}
+.jq-xp-route-k{position:absolute;left:50%;bottom:calc(100% + 4px);translate:-50% 0;white-space:nowrap;background:var(--merlot);color:var(--yellow);font:800 12px/1 var(--font-sans);text-transform:uppercase;letter-spacing:.08em;padding:4px 6px;pointer-events:none}
+/* phones: compact "XP n/9" counter instead of hiding progress */
+.jq-xp-count{position:fixed;left:calc(12px + env(safe-area-inset-left));bottom:calc(16px + env(safe-area-inset-bottom));z-index:50;display:none;align-items:center;gap:8px;min-height:44px;padding:0 12px;background:var(--merlot);color:var(--yellow);font-size:16px;letter-spacing:.08em;opacity:0;pointer-events:none;transition:opacity .2s steps(2,end)}
+.jq-xp-count-k{color:var(--coconut)}
+.jq-xp-count.is-on{opacity:1}
+@media (max-width:767px){.jq-xp-count{display:flex}}
+
+/* 5B: while a quest popup is open on small screens, get the fox dialogue + control bar out of the way;
+   the popup sits fully below the header and scrolls internally */
+@media (max-width:767px),(max-height:560px){
+  .jq-pop-open .q2-dialog-map,.jq-pop-open .q2-controls,.jq-pop-open .jq-xp-count,.jq-pop-open .q2-xp{visibility:hidden!important;opacity:0!important}
+  .q2-popup-wrap{top:calc(68px + env(safe-area-inset-top));bottom:calc(12px + env(safe-area-inset-bottom));left:12px;right:12px;width:auto;transform:none!important;pointer-events:none}
+  .q2-popup-wrap>*{pointer-events:auto}
+  .q2-popup-wrap .q2-popup{max-height:100%;overflow-y:auto;overscroll-behavior:contain}
+}
+@media (max-height:560px) and (min-width:768px){.q2-popup-wrap{left:auto;width:min(400px,100% - 24px)}}
+
+/* 14o: hide the previous vignette/popup the moment walking starts */
+.jq-walking .q2-vig-wrap,.jq-walking .q2-popup-wrap{visibility:hidden!important}
+
+/* 14g: landscape phones, title screen: no control bar under the menu (PRESS START is right there) */
+@media (max-height:560px),(max-width:767px) and (max-height:740px){.jq-at-title .q2-controls,.jq-at-title .jq-xp-count{visibility:hidden}}
+
+/* 14B: official SVG wordmark */
+.jq-logo-img{display:block;max-width:100%;height:auto}
+.jq-logo-title{width:auto;margin-top:24px;height:clamp(44px,8vw,96px)}
+@media (max-height:820px){.jq-logo-title{margin-top:12px;height:clamp(44px,6.5vw,72px)}}
+@media (max-height:560px){.jq-logo-title{height:40px}}
+.jq-logo-credits{width:auto;height:56px}
+
+/* 14f: title subline, PRESS START blink stops, How to play rows */
+.jq-subline{margin-top:10px;max-width:42ch;font-size:1rem;font-weight:600;line-height:1.4;color:var(--coconut-78)}
+.q2-start.is-still{animation:none}
+.q2-how.jq-how{font-family:var(--font-sans);text-transform:none;letter-spacing:0;color:var(--coconut);text-align:left;width:min(360px,calc(100vw - 24px))}
+.jq-how ul{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.jq-how li{display:flex;align-items:flex-start;gap:12px;font-size:1rem;font-weight:700;line-height:1.35}
+.jq-how-ico{flex:none;display:grid;place-items:center;width:32px;height:32px;background:var(--yellow);color:var(--merlot)}
+.jq-how-ico.is-bang{font-family:var(--font-px);font-size:18px;-webkit-font-smoothing:none}
+.jq-how-key{display:block;margin-top:2px;font-size:.9375rem;font-weight:600;color:var(--coconut-78)}
+@media (max-height:560px){.q2-how.jq-how{bottom:auto;top:64px}}
+
+/* 17: CJC regular badge on the second fox */
+.jq-badge{position:absolute;right:-8px;bottom:-6px;width:24px;height:auto;display:block}
+
+/* 14h: One more song */
+.jq-song{touch-action:manipulation}
+.jq-song[aria-disabled=true]{background:var(--merlot-700);color:var(--coconut-78);cursor:default}
+
+/* 10: Stop 5, the unlock line */
+.jq-unlock{margin-top:16px;max-width:42ch;font-size:1.125rem;font-weight:700;line-height:1.4;color:var(--merlot)}
+.jq-unlock-k{margin-top:14px;display:inline-block;padding:6px 10px;background:var(--yellow);color:var(--merlot)}
+
+/* 11A: save point */
+.jq-kicker{font-family:var(--font-px);-webkit-font-smoothing:none;text-transform:uppercase;font-size:16px;letter-spacing:.12em}
+.jq-save-sub{margin-top:14px;max-width:40ch;font-size:1.0625rem;font-weight:600;line-height:1.45}
+
+/* 18 + 14d: credits team row and end-of-game buttons */
+.jq-team{margin:16px auto 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:12px;max-width:780px}
+.jq-team li{display:flex;flex-direction:column;align-items:center;gap:6px;width:140px}
+.jq-plate{display:block;width:140px;height:auto;aspect-ratio:16/10;object-fit:contain}
+.jq-plate-role{font-size:.9375rem;font-weight:700;color:var(--coconut-78)}
+.jq-endnav{margin:0;padding:0;list-style:none;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px}
+.q2-credits .jq-endnav .btn{padding:9px 18px;min-height:44px}
+.q2-credits .jq-endnav .jq-wa-btn{box-shadow:none}
+@media (max-width:767px),(max-height:760px){
+  .q2-credits{height:auto}
+  .q2-credits-view{height:auto;position:static;padding:96px 0 120px}
+  .q2-credits-view>div{transform:none!important}
+}
+/* 5B: signpost name tags only while walking the route, so they never sit clipped under the header later */
+html:not(.jq-on-route) .q2-bigsign-label{opacity:0!important}
+
+/* 14f/14g: short phones, keep the title menu clear of the control bar */
+@media (max-width:767px) and (max-height:740px){.q2-title-fox{width:116px}.q2-title .q2-start{margin-top:12px}.q2-title .q2-menu{margin-top:6px}.jq-logo-title{margin-top:8px}}
+
+/* 5B: the Go/Back fast-travel tags are pointer helpers (tabindex -1); on phones they clip at the edges and crowd the controls, so Next/Back carry navigation there */
+@media (max-width:767px){.q2-go{display:none}}
+
+/* 14f: on portrait phones the How to play rows open in the flow under the menu (no overlay over the title) */
+@media (max-width:639px) and (min-height:561px){.q2-how.jq-how{position:relative;left:auto;bottom:auto;translate:none;margin:8px 0 4px;width:min(320px,calc(100vw - 40px));padding:12px}}
+@media (max-height:560px){.q2-how.jq-how{z-index:55;box-shadow:0 0 0 3px var(--yellow)}}
+
+/* 14g: landscape phones (max-height 560px): the whole title screen, menu row included, fits above the fold */
+@media (max-height:560px){.q2-title{padding-top:60px;padding-bottom:16px}.q2-title .q2-title-fox{width:56px}.q2-title .jq-logo-title{margin-top:4px;height:40px}.q2-title h1{margin-top:6px}.q2-title h1+p{margin-top:4px}.q2-title .jq-subline{margin-top:2px;font-size:.9375rem}.q2-title .q2-start{margin-top:4px}.q2-title .q2-menu{margin-top:0}}
+
+/* ==========================================================================
+   OPTION A (cairo-jazz-quest-a): light polish. Item numbers refer to the approved Option A list.
+   ========================================================================== */
+
+/* 1: title NEW QUEST card */
+.jq-hook{--frame:var(--yellow);--frame-w:3px;margin-top:18px;width:min(300px,100%)}
+.jq-hook-in{background:var(--merlot-700);padding:10px 14px 12px;text-align:left}
+.jq-hook-k{display:inline-block;padding:3px 7px;background:var(--yellow);color:var(--merlot);font-family:var(--font-px);-webkit-font-smoothing:none;text-transform:uppercase;font-size:16px;letter-spacing:.12em;line-height:1.1}
+.jq-hook-list{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:3px;font-size:1rem;font-weight:700;line-height:1.3;color:var(--coconut)}
+.jq-hook-ep{color:var(--yellow);font-weight:800}
+.jq-hook-l{color:var(--coconut-78);font-weight:600}
+
+/* 2: PRESS START stays primary; the skip is a quiet outlined secondary */
+.jq-start-row{margin-top:24px;display:flex;flex-direction:column;align-items:center;gap:6px}
+.q2-title .jq-start-row .q2-start{margin-top:0}
+.jq-skip{min-height:44px;padding:8px 16px;border:2px solid rgba(249,245,233,.55);background:transparent;color:var(--coconut);font-weight:700;font-size:.9375rem;line-height:1.2;cursor:pointer}
+.jq-skip:hover{border-color:var(--yellow);color:var(--yellow)}
+.jq-skip:focus-visible,.jq-hud-skip:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.jq-hud-skip{display:none}
+@media (min-width:768px){
+  .jq-hud-skip{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;color:var(--coconut);font-weight:800;font-size:.9375rem;white-space:nowrap;cursor:pointer;visibility:hidden;opacity:0;transition:opacity .2s steps(2,end),visibility 0s .2s}
+  .jq-hud-skip.is-on{visibility:visible;opacity:1;transition:opacity .2s steps(2,end)}
+  .jq-hud-skip:hover{color:var(--yellow)}
+}
+/* short portrait phones: keep the whole title compact */
+@media (max-width:767px) and (max-height:740px){
+  .q2-title{padding-top:68px}
+  .q2-title .q2-title-fox{width:84px}
+  .q2-title .jq-logo-title{margin-top:4px;height:40px}
+  .q2-title h1{margin-top:4px}
+  .q2-title h1+p{margin-top:8px}
+  .q2-title .jq-subline{margin-top:4px;font-size:.9375rem;line-height:1.3}
+  .jq-hook{margin-top:10px}
+  .jq-hook-in{padding:8px 12px 10px}
+  .jq-hook-list{margin-top:6px;gap:1px}
+  .jq-start-row{margin-top:8px;gap:2px}
+  .q2-title .jq-start-row .q2-start{min-height:44px}
+}
+@media (max-width:767px) and (max-height:600px){.q2-title .q2-title-fox{width:64px}}
+/* landscape phones: card on one row, PRESS START and the skip side by side */
+@media (max-height:560px){
+  .jq-hook{margin-top:6px;width:auto;max-width:100%}
+  .jq-hook-in{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:6px 10px}
+  .jq-hook-list{margin:0;display:flex;flex-wrap:wrap;gap:2px 14px;font-size:.9375rem}
+  .jq-start-row{margin-top:6px;flex-direction:row;gap:16px}
+}
+
+/* 3: signposts show both cards, stacked; no toggle */
+.jq-cards{display:grid;grid-template-columns:1fr;gap:8px;margin:12px 0 0;padding:0;list-style:none}
+.jq-card{min-height:0;padding:10px 12px;background:var(--coconut);border:3px solid var(--merlot);text-align:left;cursor:inherit}
+.jq-card-t{font-weight:800;font-size:1rem;line-height:1.2;color:var(--merlot)}
+.jq-card .jq-card-d{margin-top:4px;font-size:.9375rem;font-weight:600;line-height:1.4;color:var(--body)}
+@media (max-width:767px){
+  .jq-card .jq-card-d{font-size:1rem}
+  .jq-sign-in{max-height:calc(100svh - 160px - env(safe-area-inset-bottom));overflow-y:auto;overscroll-behavior:contain}
+}
+@media (max-height:560px) and (min-width:768px){
+  .jq-sign-in{max-height:calc(100svh - 184px);overflow-y:auto;overscroll-behavior:contain}
+}
+
+/* 4: the asks under the one "free" line at the night stop (map dialogue + plain list) */
+.jq-need{margin-top:10px;padding-top:8px;border-top:2px solid rgba(104,27,43,.18)}
+.jq-need-k{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;line-height:1.2;color:var(--body)}
+.jq-need-list{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:4px}
+.jq-need-list li{position:relative;padding-left:16px;font-size:.9375rem;font-weight:700;line-height:1.3;color:var(--merlot)}
+.jq-need-list li:before{content:"";position:absolute;left:0;top:.4em;width:7px;height:7px;background:var(--merlot)}
+@media (max-width:767px){.jq-need-list li{font-size:1rem}}
+@media (max-height:560px){.jq-need{margin-top:6px;padding-top:6px}.jq-need-list{gap:2px}.jq-need-list li{font-size:.9375rem}}
+
+/* 6: save point recap, above the WhatsApp CTA */
+.jq-recap{margin-top:32px;display:grid;gap:20px;padding:18px;background:var(--coconut);box-shadow:0 0 0 3px var(--merlot)}
+@media (min-width:900px){.jq-recap{grid-template-columns:minmax(0,3fr) minmax(0,2fr);padding:24px 26px}}
+.jq-recap-k{font-family:var(--font-px);-webkit-font-smoothing:none;text-transform:uppercase;font-size:16px;letter-spacing:.12em;color:var(--merlot)}
+.jq-chips{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.jq-chip{max-width:100%;padding:7px 11px;background:var(--yellow);border:2px solid var(--merlot);font-weight:700;font-size:.9375rem;line-height:1.3;color:var(--merlot)}
+.jq-chips.is-need .jq-chip{background:var(--blue)}
+.jq-recap-free{grid-column:1/-1;font-size:.9375rem;font-weight:700;line-height:1.4;color:var(--body)}
+@media (max-width:767px){.jq-chip,.jq-recap-free{font-size:1rem}}
+.jq-recap+div{margin-top:40px}
+/* 6 (phones): chips become a tight bullet list so the recap and the CTA stay close */
+@media (max-width:639px){
+  #launch{padding-top:88px}
+  .jq-recap{margin-top:22px;padding:14px 14px 16px;gap:14px}
+  .jq-chips{display:grid;gap:5px;margin-top:8px}
+  .jq-chip{position:relative;padding:0 0 0 18px;border:0;background:none;line-height:1.35}
+  .jq-chip:before{content:"";position:absolute;left:2px;top:.42em;width:8px;height:8px;background:var(--yellow);box-shadow:0 0 0 2px var(--merlot)}
+  .jq-chips.is-need .jq-chip{background:none}
+  .jq-chips.is-need .jq-chip:before{background:var(--blue)}
+  .jq-recap+div{margin-top:28px}
+}
+@media (max-width:639px){.q2-dialog-map .jq-need{margin-left:-78px}}
+/* desktop/tablet short viewports: keep the title menu above the fold with the new card */
+@media (min-width:768px) and (min-height:561px) and (max-height:820px){
+  .q2-title{padding-top:96px;padding-bottom:72px}
+  .q2-title .q2-title-fox{width:120px}
+  .jq-hook{margin-top:14px}
+  .jq-start-row{margin-top:16px}
+  .q2-title .q2-menu{margin-top:6px}
+}
+/* save point: recap stays compact so the CTA and sign-off clear the fixed control bar */
+@media (min-width:640px){
+  #launch{padding-top:96px}
+  .jq-recap{margin-top:24px;gap:16px 28px;padding:18px 22px}
+  .jq-chips{gap:6px;margin-top:8px}
+  .jq-chip{padding:5px 10px}
+  .jq-recap+div{margin-top:28px}
+}
+/* 3 (landscape phones/tablets): both signpost cards side by side so neither hides below the fold */
+@media (max-height:560px) and (min-width:768px){
+  .q2-vig-wrap{width:min(520px,100% - 48px)}
+  .jq-sign-in .q2-vignette-copy>p:first-child{display:none}
+  .jq-sign-in .q2-vignette-title{margin-top:0}
+  .jq-cards{grid-template-columns:1fr 1fr;margin-top:8px}
+  .jq-card{padding:8px 10px}
+}@media (max-height:560px) and (min-width:768px){.q2-vig>.q2-next{right:auto;left:20px}}
+
+/* ==========================================================================
+   POLISH PASS (Option A). Same title + HUD treatment as Option B: fox + bubble, one lockup, "Made for Farah",
+   a big PRESS START, then quiet secondary items (Skip to the offer / How to play / WhatsApp Radwa).
+   ========================================================================== */
+.jq-title-a,.jq-title-b{display:flex;flex-direction:column;align-items:center;max-width:100%}
+.jq-title-hook{display:flex;align-items:center;justify-content:center;gap:18px;max-width:100%}
+.jq-title .q2-title-fox{flex:none}
+.jq-bubble{position:relative;max-width:min(30ch,100%);text-align:left;background:var(--coconut);color:var(--merlot);padding:12px 14px;font-weight:700;font-size:1rem;line-height:1.35;box-shadow:0 0 0 3px var(--yellow)}
+.jq-bubble:before{content:"";position:absolute;left:-15px;top:50%;margin-top:-6px;width:12px;height:12px;background:var(--yellow);clip-path:polygon(0 50%,100% 0,100% 100%)}
+.jq-bubble-k{display:block;margin-bottom:4px;font-size:16px;letter-spacing:.12em;color:var(--body)}
+.jq-title .jq-title-b .jq-start{margin-bottom:16px}
+.jq-title .jq-title-b .jq-start+.jq-title-menu{margin-top:0}
+/* How to play opens under the secondary row on tablet/desktop (it used to sit to the right of a vertical menu) */
+@media (min-width:640px) and (min-height:561px){.jq-title .q2-how.jq-how{left:50%;top:calc(100% + 12px);translate:-50% 0;z-index:5}}
+/* portrait phones: the three secondary items stack, How to play opens in the flow under its row */
+@media (max-width:639px) and (min-height:561px){.jq-title .jq-title-menu{flex-direction:column;gap:0}.jq-title .jq-title-menu>li{display:flex;flex-direction:column;align-items:center}}
+/* the HUD skip lines up with the other 44px header items */
+.jq-hud-skip{height:44px}
+
+
+/* Header: three 44px items on one line. The lockup (wordmark + "× Cairo Jazz Club") hides while a big wordmark is on screen */
+.jq-hud-brand{height:44px;padding:0 14px;gap:12px;transition:opacity .3s steps(3,end),visibility 0s}
+html:not(.jq-brand-on) .jq-hud-brand{opacity:0;visibility:hidden;transition:opacity .2s steps(2,end),visibility 0s .2s}
+.jq-hud-brand img{height:18px;width:auto}
+.jq-hud-x{display:none;font-family:var(--font-sans);font-weight:800;font-size:.9375rem;line-height:1;letter-spacing:-.01em;color:var(--yellow);white-space:nowrap}
+@media (min-width:1024px){.jq-hud-x{display:inline}}
+.jq-log-btn,.jq-wa-pill{height:44px;min-height:44px}
+@media (max-width:767px){
+  .q2-hud>div:first-child{padding:16px 16px 0;gap:8px}
+  .jq-hud-brand{padding:0 12px}
+  .jq-hud-brand img{height:16px}
+}
+@media (max-width:359px){.jq-hud-brand{padding:0 10px}.jq-hud-brand img{height:14px}}
+
+/* Title screen: the control bar steps away (the title has its own Start) */
+.q2-controls,.jq-xp-count{transition:opacity .2s steps(2,end),visibility 0s}
+.jq-at-title .q2-controls,.jq-at-title .jq-xp-count{visibility:hidden;opacity:0}
+
+/* Title layout */
+.jq-title.q2-title{justify-content:center;padding:96px 16px 32px;row-gap:0}
+.jq-title .jq-title-a{width:100%}
+.jq-title .jq-title-hook{gap:24px;align-items:center}
+.jq-title .q2-title-fox{width:152px}
+.jq-title .jq-bubble{max-width:min(32ch,100%);padding:14px 18px 16px;font-size:1.0625rem;line-height:1.4;box-shadow:0 0 0 3px var(--yellow)}
+.jq-title .jq-bubble:before{left:-17px;width:14px;height:16px;margin-top:-8px}
+.jq-title .jq-bubble-k{margin-bottom:6px}
+.jq-lockup{display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:32px;max-width:100%}
+.jq-title .jq-lockup .jq-logo-title{margin:0;height:clamp(48px,5.6vw,80px);width:auto;max-width:100%}
+.jq-title .jq-lockup-h{display:flex;align-items:baseline;justify-content:center;gap:.4em;margin:0;font-family:var(--font-sans);font-size:clamp(1.25rem,2.1vw,1.875rem);font-weight:800;line-height:1.1;letter-spacing:-.02em;color:var(--yellow)}
+.jq-lockup-x{font-weight:600;color:var(--coconut-78)}
+.jq-made{margin-top:16px;font-family:var(--font-px);-webkit-font-smoothing:none;text-transform:uppercase;font-size:16px;letter-spacing:.14em;color:var(--coconut-78)}
+.jq-title .jq-title-b{width:100%;margin-top:32px}
+.jq-title .jq-title-menu{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px 8px;margin:0;padding:0;list-style:none}
+/* primary: big yellow pixel button */
+.jq-start.btn{min-height:56px;padding:0 32px 0 28px;gap:14px;font-family:var(--font-px);font-weight:400;font-size:20px;letter-spacing:.14em;text-transform:uppercase;-webkit-font-smoothing:none;--step:4px;filter:drop-shadow(0 4px 0 var(--night))}
+.jq-start.btn:hover{--btn-bg:#fff09e}
+.jq-start.btn:active{transform:translateY(2px);filter:drop-shadow(0 2px 0 var(--night))}
+.jq-start.btn:focus-visible{outline:3px solid var(--coconut);outline-offset:6px}
+.jq-start .q2-cursor{opacity:1;background:var(--merlot);width:10px;height:16px}
+/* secondary: quiet pixel links, same 44px target */
+.jq-sec{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 14px;font-size:16px;letter-spacing:.12em;color:var(--coconut);text-transform:uppercase;-webkit-font-smoothing:none}
+.jq-sec:hover,.jq-sec:focus-visible{color:var(--yellow)}
+.jq-sec:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.jq-sec .q2-cursor{width:8px;height:14px}
+
+/* short desktops (720-820px tall) */
+@media (min-width:768px) and (max-height:820px){
+  .jq-title.q2-title{padding-top:88px;padding-bottom:24px}
+  .jq-title .q2-title-fox{width:128px}
+  .jq-lockup{margin-top:24px}
+  .jq-title .jq-lockup .jq-logo-title{height:clamp(48px,5vw,72px)}
+  .jq-title .jq-title-b{margin-top:24px}
+}
+
+/* roomy desktops (821px+ tall): scale the whole stack up one step */
+@media (min-width:1024px) and (min-height:821px){
+  .jq-title .q2-title-fox{width:176px}
+  .jq-title .jq-bubble{font-size:1.125rem}
+  .jq-title .jq-lockup .jq-logo-title{height:clamp(72px,5.6vw,96px)}
+  .jq-title .jq-lockup-h{font-size:2rem}
+  .jq-start.btn{min-height:64px;padding:0 40px 0 34px;font-size:22px}
+}
+
+/* phones (portrait) */
+@media (max-width:767px){
+  .jq-title.q2-title{padding:76px 16px 16px}
+  .jq-title .jq-title-hook{gap:16px}
+  .jq-title .q2-title-fox{width:72px}
+  .jq-title .jq-bubble{max-width:224px;padding:10px 12px;font-size:.9375rem;line-height:1.35}
+  .jq-title .jq-bubble:before{left:-15px;width:12px;height:12px;margin-top:-6px}
+  .jq-lockup{margin-top:24px;gap:4px}
+  .jq-title .jq-lockup .jq-logo-title{height:36px}
+  .jq-title .jq-lockup-h{font-size:1.25rem}
+  .jq-made{margin-top:12px}
+  .jq-title .jq-title-b{margin-top:24px}
+  .jq-start.btn{width:min(100%,288px);min-height:52px;font-size:18px;padding:0 20px}
+  .jq-sec{padding:0 10px}
+}
+@media (max-width:359px){
+  .jq-title .q2-title-fox{width:60px}
+  .jq-title .jq-title-hook{gap:14px}
+  .jq-title .jq-bubble{max-width:204px}
+  .jq-title .jq-lockup .jq-logo-title{height:32px}
+  .jq-title .jq-lockup-h{font-size:1.125rem}
+  .jq-sec{padding:0 8px;letter-spacing:.1em}
+}
+/* landscape phones: two columns, story left, menu right */
+@media (max-height:560px){
+  .jq-title.q2-title{padding:68px 24px 16px}
+  .jq-title .q2-title-fox{width:56px}
+  .jq-title .jq-bubble{max-width:240px;padding:8px 12px;font-size:.9375rem}
+  .jq-title .jq-bubble-k{display:none}
+  .jq-lockup{margin-top:16px;gap:4px}
+  .jq-title .jq-lockup .jq-logo-title{height:32px}
+  .jq-title .jq-lockup-h{font-size:1.125rem}
+  .jq-made{margin-top:8px}
+  .jq-title .jq-title-b{margin-top:0}
+  .jq-title .jq-title-menu{flex-direction:row}
+  .jq-title .jq-title-menu .jq-sec{min-height:44px}
+  .jq-start.btn{min-height:52px;font-size:18px}
+}
+@media (max-height:560px) and (min-width:600px){
+  .jq-title.q2-title{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);column-gap:32px;align-items:center}
+}
+
+/* 16px gutters on phones for the HUD, the controls and every window */
+@media (max-width:767px){
+  .q2-controls{right:calc(16px + env(safe-area-inset-right))}
+  .jq-xp-count{left:calc(16px + env(safe-area-inset-left))}
+  .q2-overlay{padding-left:16px;padding-right:16px}
+  .q2-vig-wrap{left:16px;right:16px}
+  .q2-dialog-map{width:calc(100% - 32px)}
+}
+@media (max-width:767px),(max-height:560px){.q2-popup-wrap{left:16px;right:16px}}
+@media (max-height:560px){.q2-controls{right:calc(16px + env(safe-area-inset-right))}}
+
+/* Sweep: passed signpost tags slid under the header on phones; the save-point card centres its two columns */
+@media (max-width:767px){.q2-bigsign-label{display:none}}
+
+@media (prefers-reduced-motion:reduce){.jq-hud-brand,.q2-controls,.jq-xp-count{transition:none}}
+
+/* POLISH: WhatsApp pill/button contrast. White on #128C7E was ~4.1:1 (fails AA at 15px); WhatsApp's dark green #075E54 is ~7.7:1.
+   Hover #0C7A6C stays at ~5.2:1. The green glyph on the merlot save-point CTA (.jq-wa-cta) is unchanged. */
+.jq-wa-pill,.jq-wa-btn{background:#075E54}
+.jq-wa-pill:hover,.jq-wa-btn:hover{background:#0C7A6C}
+/* POLISH: on phones the bubble drops its "Fox" label (same as Option B) */
+@media (max-width:767px){.jq-title .jq-bubble-k{display:none}}

@@ -1,0 +1,108 @@
+/* Cairo Jazz quest: additions on top of the Questita quest-v2 styles. */
+
+.jq-lead{margin-top:.5rem;font-size:1rem;font-weight:600;line-height:1.35;color:var(--body)}
+
+/* On screen: 12 episodes */
+.jq-onscreen{display:grid;gap:16px;margin-top:18px}
+@media (min-width:768px){.jq-onscreen{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:start}}
+.jq-eps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;list-style:none;margin:0;padding:0}
+.jq-ep{position:relative;width:100%;min-width:0;padding:4px}
+.jq-ep-n{font-size:calc(var(--pxu) * 1.6);color:var(--merlot);letter-spacing:.04em}
+.jq-ep.is-hero{background:var(--blue)}
+.jq-ep.is-hero.is-selected{background:var(--yellow)}
+.jq-ep-star{position:absolute;top:3px;right:3px;width:14px;height:14px}
+.jq-insp{min-height:112px}
+
+/* Two ways to play */
+.jq-tabs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.jq-tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:12px 8px;min-width:0}
+.jq-tab-k{color:var(--body);font-size:var(--pxu)}
+.jq-tab-name{font-weight:800;color:var(--merlot);line-height:1.15;font-size:.9375rem}
+.jq-tab-price{font-weight:700;color:var(--body);font-size:.875rem}
+.jq-tab.is-picked{background:var(--yellow)}
+.jq-tabs+.jq-insp{margin-top:16px}
+
+.jq-list{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:8px}
+.jq-list li{position:relative;padding-left:20px;font-weight:600;line-height:1.35;font-size:.9375rem}
+.jq-list li:before{content:"";position:absolute;left:0;top:.42em;width:8px;height:8px;background:var(--yellow)}
+.jq-list-sm li{font-size:.875rem}
+.jq-more{margin-top:14px;display:inline-block;background:var(--yellow);color:var(--merlot);padding:10px 14px;min-height:44px;cursor:pointer;border:0}
+
+.jq-panel{margin-top:16px;background:var(--merlot);color:var(--coconut);padding:20px 18px}
+@media (min-width:768px){.jq-panel{padding:28px 30px}}
+.jq-panel-k{color:var(--yellow)}
+.jq-panel-name{margin-top:8px;font-size:1.5rem;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+.jq-panel-price{margin-top:8px;font-size:1.75rem;font-weight:800;color:var(--yellow);display:flex;flex-direction:column;gap:2px;line-height:1.1}
+.jq-panel-price span{font-size:.9375rem;font-weight:600;color:var(--coconut-78)}
+.jq-panel-h{margin-top:20px;color:var(--yellow)}
+.jq-panel .jq-list{max-width:62ch}
+.jq-pay{margin-top:20px;border-top:2px solid rgba(249,245,233,.25);padding-top:2px}
+.jq-pay p:last-child{margin-top:6px;font-weight:700;line-height:1.35}
+.jq-foot{margin-top:18px;max-width:62ch;font-size:.9375rem;font-weight:600;color:var(--body);line-height:1.45}
+
+/* Member perk: second fox walks in, product drops into the backpack */
+.jq-perk{margin-top:12px;border-top:3px solid var(--merlot);padding-top:12px}
+.jq-stage{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;overflow-x:clip}
+.jq-fox2{position:relative;width:64px;flex:none;animation:jq-walk .9s steps(6) both}
+.jq-tint{filter:hue-rotate(150deg) saturate(1.15)}
+.jq-tag{display:block;width:max-content;margin:-2px auto 0;padding:2px 5px;background:var(--coconut);border:2px solid var(--merlot);color:var(--merlot);font-size:7px;letter-spacing:.1em}
+.jq-bag{flex:1;min-width:0;background:var(--merlot);padding:6px 8px 8px;text-align:center}
+.jq-bag-k{display:block;margin-bottom:6px;color:var(--yellow);font-size:8px;letter-spacing:.2em}
+.jq-slots{display:flex;justify-content:center;gap:6px}
+.jq-slot{width:40px;height:40px;padding:3px;background:var(--coconut);border:2px solid var(--yellow);display:block;overflow:visible}
+.jq-item{display:block;width:100%;height:100%;animation:jq-drop .5s steps(5) both}
+.jq-fox-line{margin-top:10px;font-size:.875rem;font-weight:600;line-height:1.35;color:var(--merlot)}
+.jq-perk-k{margin-top:10px;display:inline-block;padding:3px 8px;background:var(--yellow);color:var(--merlot);animation:jq-pop .3s steps(3) 1.1s both}
+.jq-perk-copy{margin-top:6px;font-size:.875rem;font-weight:700;line-height:1.35;color:var(--merlot);animation:jq-pop .3s steps(3) 1.2s both}
+@keyframes jq-walk{from{transform:translateX(-160%)}to{transform:none}}
+@keyframes jq-drop{from{transform:translateY(-40px);opacity:0}50%{opacity:1}to{transform:none;opacity:1}}
+@keyframes jq-pop{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.jq-fox2,.jq-item,.jq-perk-k,.jq-perk-copy{animation:none}}
+
+/* Save point */
+.jq-contact{display:flex;flex-direction:column;align-items:flex-start;gap:18px;max-width:100%}
+.jq-contact .btn{max-width:100%;text-align:center}
+@media (max-width:480px){.jq-contact{width:100%}.jq-contact .btn{width:100%}}
+.jq-lines{display:flex;flex-direction:column;gap:6px;font-size:1.0625rem;font-weight:700}
+.jq-lines a{text-decoration:underline;text-underline-offset:3px;word-break:break-word}
+.jq-sign{display:flex;flex-direction:column;gap:2px;font-size:1rem;font-weight:600}
+.jq-sign strong{font-size:1.125rem;font-weight:800}
+
+/* Cairo Jazz additions */
+.q2-marker>span.jq-bldg{position:absolute;left:50%;top:calc(100% + 2px);transform:translateX(-50%);width:max-content;height:auto;display:block;padding:4px 7px;background:var(--merlot);color:var(--coconut);outline:0;font-size:8px;letter-spacing:.14em;line-height:1.2}
+.jq-scene{display:block;width:100%;height:auto;margin-top:14px;background:var(--night)}
+.jq-count{margin-top:12px;color:var(--merlot)}
+.jq-song{display:block;width:100%;margin-top:12px;min-height:56px;padding:14px 18px;background:var(--merlot);color:var(--yellow);font-size:calc(var(--pxu) * 1.8);letter-spacing:.14em;cursor:pointer;border:0;transition:transform .12s}
+.jq-song:active{transform:translateY(2px)}
+.jq-song:disabled{background:var(--merlot-700);color:var(--coconut-78);cursor:default}
+.jq-payoff{margin-top:10px;font-size:1rem;font-weight:700;line-height:1.35;color:var(--merlot);min-height:1px}
+.jq-small{margin-top:10px;font-size:.8125rem;font-weight:600;line-height:1.35;color:var(--body)}
+.jq-asks{display:grid;gap:10px;margin-top:16px}
+.jq-ask{padding:12px 14px;text-align:left;font-weight:800;color:var(--merlot);font-size:1rem}
+.jq-ask.is-picked{background:var(--yellow)}
+.jq-sign-in{display:block}
+.jq-cards{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.jq-card{padding:10px 8px;background:var(--coconut);border:3px solid var(--merlot);color:var(--merlot);font-weight:800;font-size:.875rem;line-height:1.2;text-align:center;cursor:pointer;min-height:56px}
+.jq-card.is-picked{background:var(--yellow);box-shadow:0 0 0 3px var(--yellow),0 0 0 6px var(--merlot)}
+.jq-card-d{margin-top:14px;font-size:.9375rem;font-weight:600;line-height:1.4;color:var(--body)}
+.jq-band{background:var(--yellow)}
+.jq-acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.jq-act{min-height:48px;padding:8px;background:var(--merlot);color:var(--coconut);border:0;cursor:pointer;font-size:var(--pxu)}
+.jq-act.is-picked{background:var(--yellow);color:var(--merlot);outline:3px solid var(--merlot)}
+.jq-ticket{margin-top:10px}
+.jq-xp{display:inline-block;padding:3px 8px;background:var(--yellow);color:var(--merlot)}
+.jq-ex{margin-top:6px;font-size:.75rem;font-weight:700;color:var(--body);font-style:italic}
+.jq-sched{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.jq-sched li{padding:8px 10px;background:var(--coconut);border:2px solid var(--merlot);font-weight:700;font-size:.875rem;color:var(--merlot)}
+.jq-sched li.is-soon{background:var(--blue)}
+.jq-num{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.jq-copy{padding:6px 10px;background:var(--merlot);color:var(--coconut);border:0;cursor:pointer;min-height:36px}
+.jq-sign span{font-weight:600}
+.jq-free{margin-top:10px;color:var(--body);font-size:calc(var(--pxu) * .9)}
+.jq-notes{position:relative;height:0}
+.jq-note{position:absolute;bottom:4px;font-size:1.25rem;font-weight:800;color:var(--yellow);animation:jq-float 1.1s steps(8) both;pointer-events:none;text-shadow:2px 2px 0 var(--merlot)}
+@keyframes jq-float{from{transform:translateY(0);opacity:1}to{transform:translateY(-90px);opacity:0}}
+@media (prefers-reduced-motion:reduce){.jq-note{animation:none;opacity:0}}
+.jq-tag-ep{display:inline-block;margin-top:10px;padding:4px 8px;background:var(--yellow);color:var(--merlot)}
+.jq-asks{grid-template-columns:1fr 1fr}
+.jq-stmt{margin-top:10px;padding-top:8px;border-top:2px solid rgba(249,245,233,.3);font-size:.875rem;font-weight:700;line-height:1.35;color:var(--yellow)}
